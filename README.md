@@ -5,7 +5,9 @@ I propose to make scroll offsets independent from the media the page is being re
 ### Try it out
 In Chrome 78.0.3886.0 and newer you can set chrome://flags#fractional-scroll-offsets to try out the proposal below.
 
-Test page: https://output.jsbin.com/payiluw
+Test pages:  
+Element: https://output.jsbin.com/payiluw  
+Window: https://output.jsbin.com/dibekeq/quiet
 
 ### What does this mean?
 
