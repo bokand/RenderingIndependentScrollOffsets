@@ -53,7 +53,11 @@ element.scrollTop = value;
 element.scrollTop === value
 ```
 
-to hold. Not only does it not, it makes life difficult for developers because the behavior will be different depending on the device. Script that works well one a development device might break on a user’s device.
+to hold. Not only does it not, it makes life difficult for developers because the behavior will be different depending on the device. Script that works well one a development device might break on a user’s device. Note that the [perfom a scroll](https://drafts.csswg.org/cssom-view/#scrolling) portion of the spec already supports this assumption:
+
+> When the scroll is _completed_, the scroll position of box must be _position_.
+
+This also matches the recommended behavior for attributes in [TAG's design principles](https://w3ctag.github.io/design-principles/#attributes-like-data)
 
 One could argue that we’re returning the rendered position so, while surprising, it’s a reasonable thing to do. However, which offsets are valid can change even on the same device. Consider a page loaded on a standard density monitor, at 200% zoom. In this case, scroll offsets can be changed at increments of 0.5. However, if the user zooms back out to 100%, only whole integers are allowed. What are we to do with the now invalid offsets? If we truncate them, should we fire scroll events? Consider a pinch-zoom which continuously changes the size of the CSS reference pixel. Changing the properties of the rendering media should not conceptually cause scrolling.
 
@@ -104,6 +108,6 @@ All browsers fired ‘scroll’ events during zooming, even if the scrollY value
 
 ### Compatibility
 
-Given that Chrome and Firefox already expose non-integer offsets to the web, the risk of opening it up to full floating-point precision should be low. This change just means that a wider range of floating-point numbers are available. Any bugs would likely already be hit on devices with a specific `devicePixelRatio`. The risk is that these are rare today but could become common if this were changed.
+Given that Chrome and Firefox already expose non-integer offsets to the web, the risk of opening it up to full floating-point precision should be low. This change just means that a wider range of floating-point numbers are available. Any bugs would likely already have been hit on devices with a specific `devicePixelRatio`. The risk is that these are rare today but could become common if this were changed.
 
-It's also possible pages are using this behavior to detect the zoom level and this would be broken. Given that information is easily available in `window.devicePixelRatio` and this isn't interoperate this shouldn't be a concern.
+It's also possible pages are using this behavior to detect the zoom level or screen density and this would be broken. Given that information is easily available in `window.devicePixelRatio` and this technique isn't interoperate this shouldn't be a concern.
