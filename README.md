@@ -23,7 +23,7 @@ The implementations vary significantly (see interop section below); however, in 
 
 The definitions of [window](https://drafts.csswg.org/cssom-view/#extensions-to-the-window-interface) and [Element](https://drafts.csswg.org/cssom-view/#extension-to-the-element-interface) both specify the scrolling properties as `double`. It may be surprising to learn that not all values of `double` are valid values.
 
-While the type is double, the rendering engine will clamp these values as it sees fit, in some cases, returning only whole integers.
+While the type is double, the rendering engine will snap these values as it sees fit, in some cases, returning only whole integers. The spec is intentionally vague about when or how these values are snapped.
 
 ### What’s the problem?
 
