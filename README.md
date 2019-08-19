@@ -101,3 +101,9 @@ Zoom in, scroll to sub-pixel offset, zoom out and back into the original level.
   * Firefox: Has an interesting property that once a scroll offset is set, e.g. 100.333, zooming out to a level where that would be invalid doesn't change this value.
 
 All browsers fired ‘scroll’ events during zooming, even if the scrollY value didn’t change.
+
+### Compatibility
+
+Given that Chrome and Firefox already expose non-integer offsets to the web, the risk of opening it up to full floating-point precision should be low. This change just means that a wider range of floating-point numbers are available. Any bugs would likely already be hit on devices with a specific `devicePixelRatio`. The risk is that these are rare today but could become common if this were changed.
+
+It's also possible pages are using this behavior to detect the zoom level and this would be broken. Given that information is easily available in `window.devicePixelRatio` and this isn't interoperate this shouldn't be a concern.
