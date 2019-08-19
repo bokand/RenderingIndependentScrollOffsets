@@ -2,6 +2,9 @@
 
 I propose to make scroll offsets independent from the media the page is being rendered on.
 
+### Try it out
+In Chrome 78.0.3886.0 and newer you can set chrome://flags#fractional-scroll-offsets to try out the proposal below.
+
 ### What does this mean?
 
 Objects in a page can have sizes and positions in continuous values; the page can apply arbitrary transformations or positions using double-precision units. However, on a typical monitor, the final rendering occurs into a grid of discrete physical pixels. Pixels are indivisible units, so the rendering must be “snapped” to the nearest pixel.
