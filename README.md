@@ -111,3 +111,9 @@ All browsers fired ‘scroll’ events during zooming, even if the scrollY value
 Given that Chrome and Firefox already expose non-integer offsets to the web, the risk of opening it up to full floating-point precision should be low. This change just means that a wider range of floating-point numbers are available. Any bugs would likely already have been hit on devices with a specific `devicePixelRatio`. The risk is that these are rare today but could become common if this were changed.
 
 It's also possible pages are using this behavior to detect the zoom level or screen density and this would be broken. Given that information is easily available in `window.devicePixelRatio` and this technique isn't interoperate this shouldn't be a concern.
+
+### Appendix
+
+[Intent to Implement and Ship: Subpixel precision for clientWidth, offsetWidth, scrollTop et al](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/_Q7A4AQBFKY/S4ahQ5iE28QJ)
+
+There's some history here regarding making these values fractional. Making the positioning and sizing properties fractional waas found to be non-web-compatible; however, the changes to scrollLeft/Top stuck.
