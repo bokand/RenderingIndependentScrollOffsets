@@ -112,6 +112,8 @@ Zoom in, scroll to sub-pixel offset, zoom out and back into the original level.
 
 All browsers fired ‘scroll’ events during zooming, even if the scrollY value didn’t change.
 
+_I believe this would be a much easier model to get interoperable behavior under, were all vendors to adopt it. Differences in pixel snapping would manifest solely as off-by-1 rendering artifacts, rather than differences in how `scroll` events are fired and `scrollTop` values which can have magnified effects in user script._
+
 ### Compatibility
 
 Given that Chrome and Firefox already expose non-integer offsets to the web, the risk of opening it up to full floating-point precision should be low. This change just means that a wider range of floating-point numbers are available. Any bugs would likely already have been hit on devices with a specific `devicePixelRatio`. The risk is that these are rare today but could become common if this were changed.
