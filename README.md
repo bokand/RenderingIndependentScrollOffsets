@@ -33,7 +33,7 @@ While the type is double, the rendering engine will snap these values as it sees
 
 The values that the engine clamps to are inconsistent and somewhat arbitrary. For example, some browsers will account for ctrl+/- zooming to allow more precision, but not pinch-zoom or CSS transforms. Furthermore, the behaviors vary significantly between major browsers.
 
-One could argue these are bugs and should be fixed to provide specific, interoperable behavior. However, I’d like to argue that clamping scroll offset values at all can produce surprising and unintuitive behavior and we should change to a model where offsets are unclamped.
+One could argue these are bugs and should be fixed to provide specific, interoperable behavior. However, I’d like to argue that snapping scroll offset values at all can produce surprising and unintuitive behavior and we should change to a model where offsets are unsnapped.
 
 Consider a device with an unusual UI scaling factor. The Nexus 5X has a devicePixelRatio of 2.625. This means that one CSS reference pixel is 2.625 device pixels. Suppose the author wishes to scroll the page:
 
