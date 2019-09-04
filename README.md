@@ -11,7 +11,7 @@ Window: https://output.jsbin.com/dibekeq/quiet
 
 ### What does this mean?
 
-Objects in a page can have sizes and positions in continuous values; the page can apply arbitrary transformations or positions using double-precision units. However, on a typical monitor, the final rendering occurs into a grid of discrete physical pixels. Pixels are indivisible units, so the rendering must be “snapped” to the nearest pixel.
+Objects in a page can have sizes and positions in continuous values; the page can apply arbitrary transformations or positions using double-precision units. However, on a typical monitor, the final rendering occurs into a grid of discrete physical pixels. Pixels are indivisible units, so the rendering must be “snapped” to the nearest pixel (or blended to simulate a sub-pixel granularity).
 
 In addition to “physical pixels”, the web is defined in terms of [CSS reference pixels](https://www.w3.org/TR/CSS21/syndata.html#length-units). These need not correspond to a physical pixel, although on a standard density monitor they typically do. Newer high density displays, typical on mobile phones, use UI scaling at the OS level to provide a higher quality image. In these cases, the reference pixel is larger than the physical pixels on the device. Many user agents also allow the user to change the size of the reference pixel (e.g. ctrl+/- in most browsers). The ratio of size between the reference pixel and a physical pixel is known as the [devicePixelRatio](https://drafts.csswg.org/cssom-view/#dom-window-devicepixelratio).
 
