@@ -125,3 +125,14 @@ It's also possible pages are using this behavior to detect the zoom level or scr
 [Intent to Implement and Ship: Subpixel precision for clientWidth, offsetWidth, scrollTop et al](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/_Q7A4AQBFKY/S4ahQ5iE28QJ)
 
 There's some history here regarding making these values fractional. Making the positioning and sizing properties fractional waas found to be non-web-compatible; however, the changes to scrollLeft/Top stuck.
+
+#### Subpixel Rendering
+
+Allowing scroll offsets to be fractional would allow sub-pixel rendering in engines that support it. For example,
+in Chrome, objects between pixel boundaries are anti-aliased by blending the colours of both sides of the pixel. This
+only works for layout-based offsets, not scroll:
+
+![Subpixel rendering, showing blending of color boundary at 0.5 of a pixel](http://bokand.github.io/zoomed.png)
+
+The above image comes from [this example](https://output.jsbin.com/yepocox/quiet) and shows how a blue box, on a red
+background, causes a purple edge because the edge lands halfway between a pixel boundary.
